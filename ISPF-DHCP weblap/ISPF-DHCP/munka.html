@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="HU">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hirek</title>
+    <link rel="stylesheet" type="" href="style/style.css">
+</head>
+
+<body>
+    <header>
+        <a href="" class="logo" id="header">Packet-tracer</a>
+        <ul class="nav-links" >
+            <li><a href="index.html">Főoldal</a></li>
+            <li><a href="munka.html"class="active">Órai munka</a></li>
+            <li><a href="credits.html">Készítette</a></li>
+        </ul>
+    </header>
+    <section>
+        <img src="image/ptlogo.jpg" id="mountain">
+        <a href="#content" id="btn">Ugrás a szövegre</a>
+    </section>
+
+    <content>
+        <div class="content" id="content">
+            <h2>ISPF-DHCP-server-switchrouter </h2>
+            <br>
+
+            <h3>A feladat</h3>
+            <br>
+            <p>Hozzunk létre egy hálózatot egy olyan épületben ami két szintes és a különböző csoportok külön hálózatokon (vlan) legyenek.
+            Seals-eseknek az alsó szintent van 10 gépük az első szinten a másodikon pedig még 10 gép. A managereknek pedig 7 gépük van az első szinten
+            míg a másodikon pedig 2. Majd a végén jutassuk ki a világhálóra egy router segítségével.</p>
+            <br>
+            <p>
+            Ez két Switchel legyen megoldva és egy külön felügyeleti vlan is legyen ami a Vlan99. Legyen még egy szerver ami dhcp-vel osztja a címeket.
+            </p>
+            <br>
+
+        <div class="feladat-img">
+        <a href="image/OFFICE.png" target="_blank" alt="">
+            <img src="image/OFFICE.png" id="OFFICE"></a>
+        </div>
+
+            <br>
+            <h3>1. Eszközök lehelyezése</h3>
+            <br>
+            <p>PC-ből 4db ezek foglyák imitálni sok-sok gépet.Swtichből 2960-24TT 2db ezek lesznek a különöböző szinteken. Szerverből 1db. Felügyeleti laptopból 1db.</p>
+            <br>
+
+            <div class="feladat-img">
+                <a href="image/1pt.png" target="_blank" alt="pt1">
+                    <img src="image/1pt.png" id="device"></a>
+            <br><br>
+
+        <h3>2. Eszközök összekötése kábellel</h3>
+        <br>
+        <p>Eszközökek kössük össze kábelekkel és próbáljunk figyelni arra is hogy hova kell kereszt vagy szimpla kötésű kábel.</p>
+        <br>
+        <div class="feladat-img">
+            <a href="image/2pt.png" target="_blank" alt="pt2">
+                <img src="image/2pt.png" id="cabel"></a>
+        </div>
+        <br>
+        <a href="#header" id="btn">Ugrás a tetejére</a>
+
+        <h3>3. Állítsuk be a DHCP-szervert.</h3>
+        <br>
+        <p>Először is kattintsunk rá szerverre, majd ott menjünk a Services fülre és ott kapcsoljuk be a DHCP-t majd írjuk be a kiosztandó címeket.Ip 192.168.99.1
+        Mask: 255.255.255.248 DG: 192.168.99.1. . Aztán már ezzel a részével kész is vagyunk.
+        </p>
+        <br>
+        <div class="feladat-img">
+            <a href="image/3pt.png" target="_blank" alt="pt3">
+                <img src="image/3pt.png" id="dhcp"></a>
+
+            <a href="image/dhcp.png" target="_blank" alt="pt3">
+                <img src="image/dhcp.png" id="dhcp2"></a>
+        </div>
+        <br>
+        <br>
+
+        <h3>4. Állítsuk be a switcheken a Vlan portokat és az átjárókat.</h3>
+        <br>
+        <p>Állítsunk be a vlanokat. Seals: vlan10; Mgmt: vlan20; Felügyeleti: vlan99; Native: vlan100; Blackhole: vlan666;<br>
+        Utána állítsubk be a switchek ip-jét és alapértelmezet átjáróit, hogy üzemelhessenek. Majd kapcsoljuk le azokat a portokat a Switchen amiket nem használunk,
+        hogy ne hagyjunk támadási felületett.
+        </p>
+        <br>
+        <div class="feladat-img">
+            <a href="image/4.2pt.png" target="_blank" alt="pt4">
+                <img src="image/4.3pt.png" id="switch"></a>
+
+            <a href="image/dhcp.png" target="_blank" alt="pt4">
+                <img src="image/dhcp.png" id="switch2"></a>
+        </div>
+        <br><br>
+
+        <h3>5. Állítsuk be a DHCP a Pc-k ip címét úgy hogy automatikusank kapja  meg. Ne legyen APIPA cím.</h3>
+        <br>
+        <p>Csak kattintsunk rá a gépre és ott Desktop majd Ip configuriton majd nyomjunk a dhcp-re.
+        </p>
+        <br>
+        <div class="feladat-img">
+            <a href="image/5pt.png" target="_blank" alt="pt5">
+                <img src="image/5pt.png" id="Pc-dhcp"></a>
+        </div>
+        <br><br>
+
+        <h3>6. Pingeljünk a belsőhálózaton belül</h3>
+        <br>
+        <p>Pingeljük meg egyik gépről az összes eszközt vagy futtasnk egy szimulácíót a Packet tracerben ,hogy lássuk minden kapcsolat megfelelően működik.
+        Ha ez megvan és mindent elértünk a hálózaton.
+        </p>
+        <br>
+        <div class="feladat-img">
+            <a href="image/6pt.png" target="_blank" alt="pt6">
+                <img src="image/6pt.png" id="Pc-dhcp"></a>
+
+            <a href="image/6pt-ping.png" target="_blank" alt="pt6">
+                <img src="image/6pt-ping.png" id="Pc-dhcp"></a>
+        </div>
+        <br><br>
+
+        <h3>7. Rakjunk fel egy Multilayer Switchet és egy Routert</h3>
+        <br>
+        <p>Kössük össze őket a belső hálózattal. Router egy ISR4331 a Multilayer-switch pedig 3560-24PS. Ezek 200.10.10.0 /30 -as hálózaton vannak.
+        Switch ip: 209.10.10.2 /30; Router: 209.10.10.1 /30; Brodcast cím: 209.10.10.3. (Ezt a router csak CLI-ben konfigurálható.)<br>
+        Ezeket kössük össze és állítsuk be majd pingeljük meg őket és kész is hálózatunk.
+        </p>
+        <br>
+        <div class="feladat-img">
+            <a href="image/7pt.png" target="_blank" alt="pt7">
+                <img src="image/7pt.png" id="Router"></a>
+
+            <a href="image/7.2pt.png" target="_blank" alt="pt7">
+                <img src="image/7.2pt.png" id="Router"></a>
+        </div>
+        <br><br>
+         <a href="#header" id="btn">Ugrás a tetejére</a>
+
+    </div>
+    </content>
+</body>
+
+</html>
